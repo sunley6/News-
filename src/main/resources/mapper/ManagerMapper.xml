@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.mapper.ManagerMapper">
+    <update id="manageredit">
+        update javaweb.manager set Mname=#{Mname},Mpassword=#{Mpassword},imgurl=#{imgurl} where Mid=#{Mid}
+    </update>
+
+
+    <select id="checklogin" resultType="com.web.pojo.Manager">
+        select * from javaweb.manager where
+        Mpassword=#{Mpassword} and
+        Mname=#{Mname}
+    </select>
+    <select id="select" resultType="com.web.pojo.Manager">
+        select * from javaweb.manager
+    </select>
+</mapper>

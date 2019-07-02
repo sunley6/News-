@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.mapper.NewsMapper">
+
+
+    <insert id="addNews">
+        insert into javaweb.news(news_title, news_content, news_text, news_createtime,news_type,imgurl) values
+        (#{newsTitle},#{newsContent},#{newsText},#{newsCreatetime},#{newsType},#{imgurl})
+    </insert>
+
+    <update id="editnews" parameterType="com.web.pojo.News">
+        update javaweb.news set news_title=#{newsTitle},news_content=#{newsContent},news_text=#{newsText},
+        news_createtime=#{newsCreatetime},imgurl=#{imgurl},news_Type=#{newsType} where news_id=#{newsId}
+    </update>
+
+    <update id="editType">
+        update javaweb.news set javaweb.news.news_type=#{name}  where news.news_type=#{firstname};
+    </update>
+    <delete id="delnews">
+        delete from javaweb.news where news_id=#{newsId}
+    </delete>
+
+    <select id="newsSelect" resultType="com.web.pojo.News">
+        select * from javaweb.news
+    </select>
+    <select id="findById" resultType="com.web.pojo.News">
+        select * from javaweb.news where news_id=#{newsId}
+    </select>
+    <select id="findByType" resultType="com.web.pojo.News">
+        select * from javaweb.news
+       where news_type=#{newsType}
+
+    </select>
+    <select id="mohufind" resultType="com.web.pojo.News">
+        select * from javaweb.news
+        where news_title like concat('%',#{searchname},'%') or news_text like concat('%',#{searchname},'%')
+
+    </select>
+    <select id="selectByrand" resultType="com.web.pojo.News">
+        select * from javaweb.news order by news_createtime desc limit 5;
+    </select>
+    <select id="selectByType" resultType="com.web.pojo.News">
+         select * from javaweb.news
+       where news_type=#{newsType} order by news_createtime desc limit 5;
+    </select>
+
+
+</mapper>

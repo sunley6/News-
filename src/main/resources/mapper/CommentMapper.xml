@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.mapper.CommentMapper">
+
+
+    <insert id="addComment">
+        insert into javaweb.comment(comment_context, news_id, Uname, comment_time) VALUES (#{commentContext},#{newsId},#{Uname},#{commentTime})
+    </insert>
+    <delete id="delcomment">
+       delete from javaweb.comment where comment_id=#{commentId}
+    </delete>
+    <select id="selectcomment" resultType="com.web.pojo.Comment">
+        select * from javaweb.comment
+    </select>
+    <select id="selectById" resultType="com.web.pojo.Comment">
+        select * from javaweb.comment where javaweb.comment.news_id=#{newsId}
+    </select>
+</mapper>

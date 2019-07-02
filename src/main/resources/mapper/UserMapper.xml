@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.mapper.UserMapper">
+
+
+    <insert id="addUser">
+        insert into javaweb.user(Uname, Upassword, Uphone,Sex) values(
+        #{Uname},#{Upassword},#{Uphone},#{Sex}
+        )
+    </insert>
+    <update id="editUser">
+        update javaweb.user set
+        Uname=#{Uname},Uphone=#{Uphone},Upassword=#{Upassword},Sex=#{Sex} where Uid=#{Uid}
+    </update>
+    <update id="editUserById">
+        update javaweb.user set
+        Uname=#{Uname},Uphone=#{Uphone},Upassword=#{Upassword},Sex=#{Sex} where Uid=#{Uid}
+    </update>
+    <delete id="deluser">
+        delete from javaweb.user where Uid=#{Uid}
+    </delete>
+    <select id="userselect" resultType="com.web.pojo.User">
+        select * from javaweb.user
+    </select>
+    <select id="findById" resultType="com.web.pojo.User">
+        select * from javaweb.user
+        where Uid=#{Uid}
+    </select>
+    <select id="checklogin" resultType="com.web.pojo.User">
+        select * from javaweb.user
+        where Uname=#{Uname} or Uphone=#{Uname} and Upassword=#{Upassword}
+    </select>
+    <select id="checkByname" resultType="com.web.pojo.User">
+        select * from javaweb.user where Uname=#{Uname} or Uphone=#{Uname}
+    </select>
+</mapper>
