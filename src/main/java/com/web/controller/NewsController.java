@@ -48,7 +48,7 @@ public class NewsController {
 
         String content=news.getNewsContent();
         System.out.println(content);
-        String img="null";
+        String img="null";//获取第一张新闻图片img地址
         if(content.indexOf("<img src=\"/upload/")!=-1) {
             img = content.substring(content.indexOf("<img src=\"/upload/"), content.indexOf("<img src=\"/upload/") + 76);
         }
@@ -130,13 +130,13 @@ public class NewsController {
     @RequestMapping("/newsdetail/{newsId}")
     public String newsdetail(Model model, @PathVariable("newsId") int newsId,HttpSession session){
         News news=newsService.findById(newsId);
-        News news1=newsService.findById(newsId);
+
 
         List<News> newsRand=newsService.selectByrand();//最新推荐新闻查询
         model.addAttribute("newsRand",newsRand);
         session.setAttribute("newsRand",newsRand);
 
-        List<News> newsType=newsService.selectByType(news1.getNewsType());//根据类型查询
+        List<News> newsType=newsService.selectByType(news.getNewsType());//根据类型查询
         model.addAttribute("newsType",newsType);
         session.setAttribute("newsType",newsType);
 
