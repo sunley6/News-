@@ -50,7 +50,7 @@ public class ManagerController {
             return "main";
         }
         else{
-            model.addAttribute("msg","账户密码错误");
+            model.addAttribute("msg","账户密码错误");//hahah
             return "login";
         }
     }
